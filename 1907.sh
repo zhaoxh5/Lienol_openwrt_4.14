@@ -8,12 +8,8 @@
 #
 
 
-# 修改主机名字，把OpenWrt-123修改你喜欢的就行（不能纯数字或者使用中文）
-sed -i 's/OpenWrt/OpenWrt-123/g' ./package/base-files/files/bin/config_generate
-
-
 # 修改openwrt登陆地址,把下面的192.168.2.2修改成你想要的就可以了
-sed -i 's/192.168.1.1/192.168.2.2/g' ./package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.5.1/g' ./package/base-files/files/bin/config_generate
 
 
 #内核版本是会随着源码更新而改变的，在Lienol/openwrt的源码查看最好，以X86机型为例，源码的target/linux/x86文件夹可以看到有几个内核版本，x86文件夹里Makefile就可以查看源码正在使用什么内核
@@ -22,13 +18,9 @@ sed -i 's/192.168.1.1/192.168.2.2/g' ./package/base-files/files/bin/config_gener
 
 
 #添加自定义插件链接（自己想要什么就github里面搜索然后添加）
-git clone -b 18.06 https://github.com/garypang13/luci-theme-edge.git package/diy/luci-theme-edge  #主题-edge-动态登陆界面
-git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/diy/luci-theme-infinityfreedom  #透明主题
-git clone -b master https://github.com/vernesong/OpenClash.git package/diy/luci-app-openclash  #openclash出国软件
-git clone https://github.com/frainzy1477/luci-app-clash.git package/diy/luci-app-clash  #clash出国软件
-git clone https://github.com/tty228/luci-app-serverchan.git package/diy/luci-app-serverchan  #微信推送
-git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/diy/luci-app-smartdns  #smartdns DNS加速
-git clone https://github.com/garypang13/luci-app-eqos.git package/diy/luci-app-eqos  #内网IP限速工具
+#git clone -b master https://github.com/vernesong/OpenClash.git package/diy/luci-app-openclash  #openclash出国软件
+#git clone https://github.com/frainzy1477/luci-app-clash.git package/diy/luci-app-clash  #clash出国软件
+#git clone https://github.com/tty228/luci-app-serverchan.git package/diy/luci-app-serverchan  #微信推送
 git clone https://github.com/jerrykuku/node-request.git package/diy/node-request  #京东签到依赖
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/diy/luci-app-jd-dailybonus  #京东签到
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-filetransfer package/diy/luci-app-filetransfer  #文件传输（可用于安装IPK）
