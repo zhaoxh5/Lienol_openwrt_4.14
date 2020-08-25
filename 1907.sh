@@ -9,7 +9,7 @@
 
 
 # 修改openwrt登陆地址,把下面的192.168.2.2修改成你想要的就可以了
-sed -i 's/192.168.1.1/192.168.5.1/g' ./package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.2.1/g' ./package/base-files/files/bin/config_generate
 
 
 #内核版本是会随着源码更新而改变的，在Lienol/openwrt的源码查看最好，以X86机型为例，源码的target/linux/x86文件夹可以看到有几个内核版本，x86文件夹里Makefile就可以查看源码正在使用什么内核
@@ -21,9 +21,9 @@ sed -i 's/192.168.1.1/192.168.5.1/g' ./package/base-files/files/bin/config_gener
 #git clone -b master https://github.com/vernesong/OpenClash.git package/diy/luci-app-openclash  #openclash出国软件
 #git clone https://github.com/frainzy1477/luci-app-clash.git package/diy/luci-app-clash  #clash出国软件
 #git clone https://github.com/tty228/luci-app-serverchan.git package/diy/luci-app-serverchan  #微信推送
-git clone https://github.com/jerrykuku/node-request.git package/diy/node-request  #京东签到依赖
-git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/diy/luci-app-jd-dailybonus  #京东签到
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-filetransfer package/diy/luci-app-filetransfer  #文件传输（可用于安装IPK）
+#git clone https://github.com/jerrykuku/node-request.git package/diy/node-request  #京东签到依赖
+#git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/diy/luci-app-jd-dailybonus  #京东签到
+#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-filetransfer package/diy/luci-app-filetransfer  #文件传输（可用于安装IPK）
 
 #使用LEDE的ShadowSocksR Plus+出国软件 (源码自带passwall出国软件)
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/diy/luci-app-ssr-plus
@@ -39,10 +39,21 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/trojan package/di
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipt2socks package/diy/ipt2socks
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/redsocks2 package/diy/redsocks2
 
+# 注释掉lienol大luci(dev-17.01)源
+sed -i 's/^\(.*luci\)/#&/' feeds.conf.default
 
+# 添加lienol大luci(dev-18.06)源
+sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06' feeds.conf.default
+
+# 删除原版smartdns插件
+#rm -rf package/feeds/packages/smartdns
+#rm -rf feeds/packages/net/smartdns
+
+# 拉取smartdns插件
+#svn co https://github.com/coolsnowwolf/packages/trunk/net/smartdns package/lienol/smartdns
 
 # 删除源码argon主题，替换成最新的argon主题
-rm -rf ./package/lean/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
+#rm -rf ./package/lean/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
 #全新的[argon-主题]登录界面,图片背景跟随Bing.com，每天自动切换
 #增加可自定义登录背景功能，可用WinSCP将文件上传到/www/luci-static/argon/background 目录下，支持jpg png gif格式图片
 #主题将会优先显示自定义背景，多个背景为随机显示，系统默认依然为从bing获取
