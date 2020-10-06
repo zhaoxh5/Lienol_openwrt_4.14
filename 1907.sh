@@ -9,7 +9,7 @@
 
 
 # 修改openwrt登陆地址,把下面的192.168.2.2修改成你想要的就可以了
-sed -i 's/192.168.1.1/192.168.2.1/g' ./package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.5.1/g' ./package/base-files/files/bin/config_generate
 
 
 #内核版本是会随着源码更新而改变的，在Lienol/openwrt的源码查看最好，以X86机型为例，源码的target/linux/x86文件夹可以看到有几个内核版本，x86文件夹里Makefile就可以查看源码正在使用什么内核
