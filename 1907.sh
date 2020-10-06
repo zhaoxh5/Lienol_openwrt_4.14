@@ -22,7 +22,7 @@ sed -i 's/192.168.1.1/192.168.2.1/g' ./package/base-files/files/bin/config_gener
 #git clone https://github.com/frainzy1477/luci-app-clash.git package/diy/luci-app-clash  #clash出国软件
 #git clone https://github.com/tty228/luci-app-serverchan.git package/diy/luci-app-serverchan  #微信推送
 #git clone https://github.com/jerrykuku/node-request.git package/diy/node-request  #京东签到依赖
-#git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/diy/luci-app-jd-dailybonus  #京东签到
+git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/diy/luci-app-jd-dailybonus  #京东签到
 #svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-filetransfer package/diy/luci-app-filetransfer  #文件传输（可用于安装IPK）
 
 #使用LEDE的ShadowSocksR Plus+出国软件 (源码自带passwall出国软件)
@@ -53,7 +53,7 @@ sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06' fe
 #svn co https://github.com/coolsnowwolf/packages/trunk/net/smartdns package/lienol/smartdns
 
 # 删除源码argon主题，替换成最新的argon主题
-#rm -rf ./package/lean/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
+rm -rf ./package/lean/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
 #全新的[argon-主题]登录界面,图片背景跟随Bing.com，每天自动切换
 #增加可自定义登录背景功能，可用WinSCP将文件上传到/www/luci-static/argon/background 目录下，支持jpg png gif格式图片
 #主题将会优先显示自定义背景，多个背景为随机显示，系统默认依然为从bing获取
