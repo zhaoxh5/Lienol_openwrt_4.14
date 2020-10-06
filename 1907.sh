@@ -53,7 +53,7 @@ sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06' fe
 #svn co https://github.com/coolsnowwolf/packages/trunk/net/smartdns package/lienol/smartdns
 
 # 删除源码argon主题，替换成最新的argon主题
-rm -rf ./package/lean/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
+#rm -rf ./package/lean/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon package/lean/luci-theme-argon
 #全新的[argon-主题]登录界面,图片背景跟随Bing.com，每天自动切换
 #增加可自定义登录背景功能，可用WinSCP将文件上传到/www/luci-static/argon/background 目录下，支持jpg png gif格式图片
 #主题将会优先显示自定义背景，多个背景为随机显示，系统默认依然为从bing获取
