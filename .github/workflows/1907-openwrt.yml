@@ -44,6 +44,7 @@ env:
   DIY_OP_SH: 1907.sh
   SSH_ACTIONS: true
   UPLOAD_BIN_DIR: false
+  UPLOAD_CONFIG: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: true
   UPLOAD_WETRANSFER: true
@@ -135,6 +136,20 @@ jobs:
         name: OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
 
+    - name: 提取config.buildinfo配置文件
+      id: config
+      run: |
+          rm -rf config && mkdir config
+          find openwrt/bin/targets/ -name "*config.buildinfo*" | xargs -i mv -f {} config
+          echo "::set-output name=status::success"
+          
+    - name: 上传.config配置文件在github空间    
+      if: steps.config.outputs.status == 'success' && env.UPLOAD_CONFIG == 'true'
+      uses: actions/upload-artifact@main
+      with:
+        name: config.buildinfo_${{ env.FILE_DATE }}
+        path: ./config
+        
     - name: 整理固件文件夹
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
