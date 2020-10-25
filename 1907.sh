@@ -39,10 +39,10 @@ git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/diy/lu
 #svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/redsocks2 package/diy/redsocks2
 
 # 注释掉lienol大luci(dev-17.01)源
-sed -i 's/^\(.*luci\)/#&/' feeds.conf.default
+#sed -i 's/^\(.*luci\)/#&/' feeds.conf.default
 
 # 添加lienol大luci(dev-18.06)源
-sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06' feeds.conf.default
+#sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06' feeds.conf.default
 
 # 删除原版smartdns插件
 #rm -rf package/feeds/packages/smartdns
