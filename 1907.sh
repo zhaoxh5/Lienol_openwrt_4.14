@@ -18,7 +18,7 @@ sed -i 's/192.168.1.1/192.168.5.1/g' ./package/base-files/files/bin/config_gener
 
 
 #添加自定义插件链接（自己想要什么就github里面搜索然后添加）
-#git clone -b master https://github.com/vernesong/OpenClash.git package/diy/luci-app-openclash  #openclash出国软件
+git clone -b master https://github.com/vernesong/OpenClash.git package/diy/luci-app-openclash  #openclash出国软件
 #git clone https://github.com/frainzy1477/luci-app-clash.git package/diy/luci-app-clash  #clash出国软件
 #git clone https://github.com/tty228/luci-app-serverchan.git package/diy/luci-app-serverchan  #微信推送
 #git clone https://github.com/jerrykuku/node-request.git package/diy/node-request  #京东签到依赖
@@ -26,24 +26,24 @@ git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/diy/lu
 #svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-filetransfer package/diy/luci-app-filetransfer  #文件传输（可用于安装IPK）
 
 #使用LEDE的ShadowSocksR Plus+出国软件 (源码自带passwall出国软件)
-svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/diy/luci-app-ssr-plus
-svn co https://github.com/fw876/helloworld/trunk/tcping package/diy/tcpping
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/shadowsocksr-libev package/diy/shadowsocksr-libev
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/pdnsd-alt package/diy/pdnsd-alt
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/microsocks package/diy/microsocks
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/dns2socks package/diy/dns2socks
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/simple-obfs package/diy/simple-obfs
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/v2ray-plugin package/diy/v2ray-plugin
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/v2ray package/diy/v2ray
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/trojan package/diy/trojan
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipt2socks package/diy/ipt2socks
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/redsocks2 package/diy/redsocks2
+#svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus package/diy/luci-app-ssr-plus
+#svn co https://github.com/fw876/helloworld/trunk/tcping package/diy/tcpping
+#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/shadowsocksr-libev package/diy/shadowsocksr-libev
+#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/pdnsd-alt package/diy/pdnsd-alt
+#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/microsocks package/diy/microsocks
+#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/dns2socks package/diy/dns2socks
+#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/simple-obfs package/diy/simple-obfs
+#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/v2ray-plugin package/diy/v2ray-plugin
+#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/v2ray package/diy/v2ray
+#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/trojan package/diy/trojan
+#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/ipt2socks package/diy/ipt2socks
+#svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/redsocks2 package/diy/redsocks2
 
 # 注释掉lienol大luci(dev-17.01)源
-#sed -i 's/^\(.*luci\)/#&/' feeds.conf.default
+sed -i 's/^\(.*luci\)/#&/' feeds.conf.default
 
 # 添加lienol大luci(dev-18.06)源
-#sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06' feeds.conf.default
+sed -i '$a src-git luci https://github.com/Lienol/openwrt-luci.git;dev-18.06' feeds.conf.default
 
 # 删除原版smartdns插件
 #rm -rf package/feeds/packages/smartdns
